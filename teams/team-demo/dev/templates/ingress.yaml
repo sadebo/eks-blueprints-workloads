@@ -23,4 +23,4 @@
 #               service:
 #                 name: team-demo-grafana
 #                 port:
-                  number: 80
+#                   number: 80
