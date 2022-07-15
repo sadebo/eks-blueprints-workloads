@@ -1,26 +1,26 @@
-# apiVersion: networking.k8s.io/v1
-# kind: Ingress
-# metadata:
-#   name: team-demo-grafana
-#   namespace: team-demo
-#   annotations:
-#     alb.ingress.kubernetes.io/group.name: demo
-#     alb.ingress.kubernetes.io/scheme: internet-facing
-#     alb.ingress.kubernetes.io/target-type: ip
-#     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}]'
-#     #alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS":443}]'
-#     #alb.ingress.kubernetes.io/actions.ssl-redirect: '{"Type": "redirect", "RedirectConfig": { "Protocol": "HTTPS", "Port": "443", "StatusCode": "HTTP_301"}}'
-#     alb.ingress.kubernetes.io/tags: Environment=dev,Team=demo
-# spec:
-#   ingressClassName: alb
-#   rules:
-#     - host: #skiapp.{{ .Values.spec.ingress.host }}
-#       http:
-#         paths:
-#           - path: /
-#             pathType: Prefix
-#             backend:
-#               service:
-#                 name: team-demo-grafana
-#                 port:
-#                   number: 80
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: team-demo-grafana
+  namespace: team-demo
+  annotations:
+    alb.ingress.kubernetes.io/group.name: demo
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}]'
+    #alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS":443}]'
+    #alb.ingress.kubernetes.io/actions.ssl-redirect: '{"Type": "redirect", "RedirectConfig": { "Protocol": "HTTPS", "Port": "443", "StatusCode": "HTTP_301"}}'
+    alb.ingress.kubernetes.io/tags: Environment=dev,Team=demo
+spec:
+  ingressClassName: alb
+  rules:
+    - host: #skiapp.{{ .Values.spec.ingress.host }}
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: team-demo-grafana
+                port:
+                  number: 80
